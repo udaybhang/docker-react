@@ -1,0 +1,17 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+#copy package.json or (public, src directory to) to WORKDIR
+
+COPY . .
+
+RUN npm install
+
+# after install copy everthing in project directory
+
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
+# run command to start-up project
+
+CMD ["npm", "run", "start"]
